@@ -16,7 +16,7 @@ using LinearMaps
 using StaticArrays
 using FunctionWrappers: FunctionWrapper
 
-export PsiOmegaFluidGrid, UniformGrid, MultiLevelGrid, gridstep
+export PsiOmegaFluidGrid, UniformGrid, MultiLevelGrid, gridstep, sublevel, baselevel
 
 include("fluids.jl")
 
