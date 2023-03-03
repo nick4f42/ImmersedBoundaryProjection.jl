@@ -437,12 +437,12 @@ function (rhsf::RhsForce)(
     return nothing
 end
 
-struct LaplacianInv
+struct LaplacianInv{P<:FFTW.r2rFFTWPlan}
     gridindex::PsiOmegaGridIndexing
     b_temp::Matrix{Float64}
     x_temp::Matrix{Float64}
     Λ::Matrix{Float64}
-    dst_plan::FFTW.r2rFFTWPlan{Float64,(7, 7),false,2,Vector{Int64}}
+    dst_plan::P
     work::Matrix{Float64}
     scale::Float64
 end
