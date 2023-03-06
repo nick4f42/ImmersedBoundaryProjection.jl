@@ -1,6 +1,6 @@
-module Recipes
+module PlotsExt
 
-using ..Quantities
+using ImmersedBoundaryProjection.Quantities
 using Plots
 
 @recipe function f(val::GridValue{<:Number,2})
@@ -35,4 +35,4 @@ end
     end
 end
 
-end # module Recipes
+end # module
