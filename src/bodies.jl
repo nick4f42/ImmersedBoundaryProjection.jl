@@ -3,6 +3,7 @@ module Bodies
 using ..ImmersedBoundaryProjection
 using ..ImmersedBoundaryProjection.Dynamics
 using ..ImmersedBoundaryProjection.Curves
+import ..ImmersedBoundaryProjection: _show
 
 using StaticArrays
 
@@ -24,6 +25,8 @@ const VectorView{T} = SubArray{T,1,Vector{T},Tuple{UnitRange{Int}},true}
 A structural body.
 """
 abstract type AbstractBody end
+
+Base.show(io::IO, ::MIME"text/plain", body::AbstractBody) = _show(io, body)
 
 """
     initial_pos!(xb::AbstractMatrix{Float64}, body::AbstractBody)
@@ -101,6 +104,23 @@ npanels(body::RigidBody) = length(body.len)
 is_static(body::RigidBody{DiscretizationFrame}, ::AbstractFrame) = true
 is_static(body::RigidBody{F}, ::F) where {F<:BaseFrame} = true
 is_static(body::RigidBody, ::AbstractFrame) = false
+
+function _show(io::IO, body::RigidBody, prefix)
+    print(io, prefix, "RigidBody:")
+    if get(io, :compact, false)
+        print(io, " in frame ", body.frame)
+    else
+        ioc = IOContext(io, :limit => true, :compact => true)
+
+        print(ioc, '\n', prefix, "  points = ")
+        summary(ioc, body.pos)
+
+        print(ioc, '\n', prefix, "   frame = ")
+        summary(ioc, body.frame)
+    end
+
+    return nothing
+end
 
 """
     ClampIndexBC(i::Int)
@@ -185,6 +205,22 @@ end
 
 npanels(body::EulerBernoulliBeamBody) = length(body.ds0)
 
+function _show(io::IO, body::EulerBernoulliBeamBody, prefix)
+    print(io, prefix, "EulerBernoulliBeamBody:")
+    if get(io, :compact, false)
+        print(io, " with bcs ", body.bcs)
+    else
+        ioc = IOContext(io, :limit => true, :compact => true)
+
+        print(ioc, '\n', prefix, "  reference points = ")
+        summary(ioc, body.xref)
+
+        print(ioc, '\n', prefix, "    boundary conds = ", body.bcs)
+    end
+
+    return nothing
+end
+
 """
     EBBeamStateView
 
@@ -254,6 +290,21 @@ Base.getindex(bodies::BodyGroup, i) = bodies.bodies[i]
 Base.IndexStyle(::BodyGroup) = IndexLinear()
 
 npanels(bodies::BodyGroup) = bodies.npanel
+
+Base.show(io::IO, ::MIME"text/plain", bodies::BodyGroup) = _show(io, bodies)
+
+function _show(io::IO, bodies::BodyGroup, prefix)
+    print(io, prefix)
+    summary(io, bodies)
+    print(io, ":\n")
+
+    indent = prefix * "  "
+    for body in bodies
+        _show(io, body, indent)
+        println(io)
+    end
+    return nothing
+end
 
 """
     PanelView

@@ -3,7 +3,7 @@ module Solvers
 using ...ImmersedBoundaryProjection
 using ...ImmersedBoundaryProjection.Bodies
 using ...ImmersedBoundaryProjection.Quantities
-import ...ImmersedBoundaryProjection: advance!, solve!, statetype, solvertype
+import ...ImmersedBoundaryProjection: advance!, solve!, statetype, solvertype, _show
 import ...ImmersedBoundaryProjection: gridstep, default_gridstep
 import ...ImmersedBoundaryProjection:
     timevalue, timeindex, timestep_scheme, conditions, discretized
