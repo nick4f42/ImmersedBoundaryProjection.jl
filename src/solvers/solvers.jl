@@ -5,7 +5,7 @@ using ...ImmersedBoundaryProjection.Bodies
 using ...ImmersedBoundaryProjection.Quantities
 import ...ImmersedBoundaryProjection: advance!, solve!, statetype, solvertype
 import ...ImmersedBoundaryProjection:
-    timevalue, timeindex, timestep_scheme, conditions, discretized
+    timevalue, timeindex, timestep_scheme, conditions, discretized, gridstep
 import ...ImmersedBoundaryProjection.Bodies:
     body_segment_length, bodypanels, prescribe_motion!
 
