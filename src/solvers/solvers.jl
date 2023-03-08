@@ -4,8 +4,9 @@ using ...ImmersedBoundaryProjection
 using ...ImmersedBoundaryProjection.Bodies
 using ...ImmersedBoundaryProjection.Quantities
 import ...ImmersedBoundaryProjection: advance!, solve!, statetype, solvertype
+import ...ImmersedBoundaryProjection: gridstep, default_gridstep
 import ...ImmersedBoundaryProjection:
-    timevalue, timeindex, timestep_scheme, conditions, discretized, gridstep
+    timevalue, timeindex, timestep_scheme, conditions, discretized
 import ...ImmersedBoundaryProjection.Bodies:
     body_segment_length, bodypanels, prescribe_motion!
 
@@ -18,7 +19,7 @@ using StaticArrays
 using FunctionWrappers: FunctionWrapper
 
 export FreestreamFlow, PsiOmegaFluidGrid, UniformGrid, MultiLevelGrid
-export gridstep, sublevel, baselevel
+export sublevel, baselevel
 
 include("fluids.jl")
 
