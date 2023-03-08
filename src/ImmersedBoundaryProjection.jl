@@ -17,7 +17,7 @@ export Curves, AbstractBody, BodyGroup, RigidBody, Panels, PanelView, npanels, b
 
 export AbstractBody, BodyGroup, RigidBody, npanels, Panels, PanelView
 export EulerBernoulliBeamBody, ClampIndexBC, ClampParameterBC
-export Quantities, quantity, times, coordinates
+export Quantities, quantity, coordinates
 
 export Timesteps, TimestepCondition, AllTimesteps, timestep_times, timestep_indices
 export TimestepTimes, TimestepTimeRange, TimestepIndices, TimestepIndexRange
