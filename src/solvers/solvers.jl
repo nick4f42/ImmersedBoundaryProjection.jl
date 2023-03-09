@@ -19,7 +19,7 @@ using StaticArrays
 using FunctionWrappers: FunctionWrapper
 
 export FreestreamFlow, PsiOmegaFluidGrid, UniformGrid, MultiLevelGrid
-export sublevel, baselevel
+export sublevel, baselevel, nlevels
 
 include("fluids.jl")
 
