@@ -2,6 +2,7 @@ module ImmersedBoundaryProjection
 
 using HDF5
 using FunctionWrappers: FunctionWrapper
+using ProgressMeter
 
 export AbstractScheme, CNAB, default_scheme
 
