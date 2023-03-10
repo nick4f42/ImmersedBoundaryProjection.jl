@@ -23,6 +23,7 @@ HDF5 = "0.16"
 IterativeSolvers = "0.9"
 LinearMaps = "3"
 Plots = "1"
+ProgressMeter = "1"
 RecipesBase = "1"
 StaticArrays = "1"
 
